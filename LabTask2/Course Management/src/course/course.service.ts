@@ -2,6 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCourseDto } from './dto/create-course.dto.js';
 import { UpdateCourseDto } from './dto/update-course.dto.js';
+import type { Express } from 'express';
 
 @Injectable()
 export class CourseService {
@@ -49,15 +50,12 @@ export class CourseService {
     };
   }
 
-  uploadCourseMaterial(
-    id: string,
-    file: Express.Multer.File,//founderrorinexpress.Multer.File
-  ) {
+  uploadCourseMaterial(id: string, file: Express.Multer.File) {
     return {
       message: 'Material uploaded successfully',
       courseId: id,
       filename: file.filename,
-      path: file.path.replace(/\\/g, '/'),
+      path: `uploads/${file.filename}`,
     };
   }
 }
