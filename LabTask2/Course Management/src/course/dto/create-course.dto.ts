@@ -19,8 +19,9 @@ export class CreateCourseDto {
     @Min(1)
     @Max(6)
     credits: number;
-    
+
     @IsOptional()
     @IsString()
     description?: string;
 }
+
